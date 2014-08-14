@@ -165,7 +165,7 @@
     #content h2 {
         font-family: 'Dosis', sans-serif;
         font-weight: 300;
-        font-size: 20px;
+        font-size: 16px;
         padding: 0px 0px;
         margin-top: 0px;
         margin-bottom: 8px;
@@ -178,7 +178,7 @@
         font-size: 18px;
         padding: 0px 0px;
         margin-top: 0px;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
         color: #666;
     }
 
