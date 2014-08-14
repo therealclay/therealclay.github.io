@@ -1,266 +1,167 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500' rel='stylesheet' type='text/css'>
-  <title>CLAYTON HARPER | HE MAKES SOFTWARE </title>
-  
-  <script type="text/javascript" src="scripts/Headroom.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500' rel='stylesheet' type='text/css'>
+    <title>CLAYTON HARPER | HE MAKES SOFTWARE </title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.scrollto.js"></script>  
+    <script>
+    $(document).ready(function(){
 
-  <script>
-        // grab an element
-        var myElement = document.querySelector("header");
-        // construct an instance of Headroom, passing the element
-        var headroom  = new Headroom(myElement);
-        // initialise
-        headroom.init(); 
+        /** 
+         * This part does the "fixed navigation after scroll" functionality
+         * We use the jQuery function scroll() to recalculate our variables as the 
+         * page is scrolled/
+         */
+        $(window).scroll(function(){
+            var window_top = $(window).scrollTop() + 80; // the "80" should equal the margin-top value for nav.stick
+            var div_top = $('#nav-anchor').offset().top;
+                if (window_top > div_top) {
+                    $('nav').addClass('stick');
+                } else {
+                    $('nav').removeClass('stick');
+                }
+        });
+
+        /**
+         * This part causes smooth scrolling using scrollto.js
+         * We target all a tags inside the nav, and apply the scrollto.js to it.
+         */
+        $("nav a").click(function(evn){
+            evn.preventDefault();
+            $('html,body').scrollTo(this.hash, this.hash); 
+        });
+
+        /**
+         * This part handles the highlighting functionality.
+         * We use the scroll functionality again, some array creation and 
+         * manipulation, class adding and class removing, and conditional testing
+         */
+        var aChildren = $("nav li").children(); // find the a children of the list items
+        var aArray = []; // create the empty aArray
+        for (var i=0; i < aChildren.length; i++) {    
+            var aChild = aChildren[i];
+            var ahref = $(aChild).attr('href');
+            aArray.push(ahref);
+        } // this for loop fills the aArray with attribute href values
+
+        $(window).scroll(function(){
+            var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
+            var windowHeight = $(window).height(); // get the height of the window
+            var docHeight = $(document).height();
+
+            for (var i=0; i < aArray.length; i++) {
+                var theID = aArray[i];
+                var divPos = $(theID).offset().top; // get the offset of the div from the top of page
+                var divHeight = $(theID).height(); // get the height of the div in question
+                if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
+                    $("a[href='" + theID + "']").addClass("nav-active");
+                } else {
+                    $("a[href='" + theID + "']").removeClass("nav-active");
+                }
+            }
+
+            if(windowPos + windowHeight == docHeight) {
+                if (!$("nav li:last-child a").hasClass("nav-active")) {
+                    var navActiveCurrent = $(".nav-active").attr("href");
+                    $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
+                    $("nav li:last-child a").addClass("nav-active");
+                }
+            }
+        });
+    });
     </script>
-
-  <style>
-    body, html {
-        padding : 0px 10px;
-        margin : 0px;
-        background-color: #F7F7F7;
-    }
-
-    #wrapper {
-        width:1000px;
-        margin: 80px 0px;
-        padding: 0px;
-
-    }
-
-    #header {
-        background-color:#F7F7F7;
-        width:900px;
-        height:40px;
-        padding: 10px 0px;
-        border-bottom: 1px solid #CCC;
-        display: table;
-        position: fixed;
-        z-index: 10;
-        top: 0;
-
-    }
-
-    #header h1 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 400;
-        font-size: 19px;
-        padding: 0px 0px;
-        margin: 0px 0px;
-        color: #666;
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    #header_sm {
-        background-color:#F7F7F7;
-        width:900px;
-        height:30px;
-        padding: 5px 0px;
-        display: table;
-    }
-
-    #header_sm h1 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        font-size: 16px;
-        padding: 0px 0px;
-        margin: 0px 0px;
-        color: #666;
-        display: table-cell;
-        vertical-align: middle;
-    } 
-
-    #leftnav {
-        background-color:#F7F7F7;
-        width:200px;
-        padding: 0px 0px 0px 0px;
-        margin: 0px 0px;
-        float:left;
-    }
-
-    #leftnav hr {
-        height: 0px;
-        background: #F7F7F7;
-        width: 80%;
-        font-size: 1px; /* IE 6 */
-        overflow: hidden;
-        margin: 10px 0px;
-    }   
-
-    #leftnav h1 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        font-size: 16px;
-        padding: 0px 0px 5px 0px;
-        margin: 0px 0px;
-        color: #666;
-    } 
-
-    #leftnav ul, li {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 200;
-        font-size: 14px;
-        text-decoration: none;
-        list-style-type: none;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        color: #666;
-    }
-
-    #leftnav a {
-        text-decoration: none;
-        color: #666;
-        line-height: 28px;
-    } 
-
-    #leftnav a:hover {
-        color: #000000;
-        font-weight: 300;
-    }
-
-    #leftnav a:active {
-        color: #000000;
-    }
-
-    #content {
-        background-color:#F7F7F7;
-        width:700px;
-        padding: 0px 0px;
-        float:left;
-    }
-
-    #content h1 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 200;
-        font-size: 22px;
-        padding: 0px 0px;
-        margin-top: 0px;
-        margin-bottom: 8px;
-        color: #666;
-        text-decoration:underline;
-    }
-
-    #content h2 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        font-size: 20px;
-        padding: 0px 0px;
-        margin-top: 0px;
-        margin-bottom: 8px;
-        color: #666;
-    }
-
-    #content h3 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        font-size: 18px;
-        padding: 0px 0px;
-        margin-top: 0px;
-        margin-bottom: 8px;
-        color: #666;
-    }
-
-    #content h4 {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 200;
-        font-size: 18px;
-        padding: 0px 0px;
-        margin-top: 0px;
-        margin-bottom: 8px;
-        color: #666;
-    }
-
-    #content p {
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        font-size: 14px;
-        line-height: 20px;
-        padding: 0px 0px;
-        margin-top: 2px;
-        margin-bottom: 8px;
-        color: #666;
-    } 
-
-    #content hr {
-        height: 0px;
-        background: #F7F7F7;
-        width: 100%;
-        font-size: 1px; /* IE 6 */
-        overflow: hidden;
-        margin: 15px 0px;
-    }
-
-.headroom {
-    transition: transform 200ms linear;
-}
-.headroom--pinned {
-    transform: translateY(0%);
-}
-.headroom--unpinned {
-    transform: translateY(-100%);
-}     
-
-  </style>
 
 </head>
 
 <body>
-
     <div id="header">
         <h1>CLAYTON HARPER&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;USER EXPERIENCE & SERVICE ARCHITECTURE&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;917 803 8661&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;CEHARPER (A) MAC.COM</h1>
     </div>
-<div id="wrapper"> 
-    <div id="leftnav">
+<div id="wrapper">
+    <div id="sidebar">
+    <div id="portrait">
         <img src="images/clay.jpg" width="165">
-        <hr>
+    </div>
+    <nav class>       
+        <div id="nav-anchor"></div> 
         <h1>OVERVIEW</h1>
         <ul>
-            <li><a href="">Experience</a></li>
-            <li><a href="">Skills</a></li>
-            <li><a href="">Education</a></li>          
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>          
         </ul>
         <hr>
         <h1>PROJECT EXAMPLES</h1>
         <ul>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
-            <li><a href="">Project Name</a></li>
+            <li><a href="#project1">Project Name</a></li>
+            <li><a href="#project2">Project Name</a></li>
+            <li><a href="#project3">Project Name</a></li>
         </ul>
+    </nav>
     </div>
+
     <div id="content">
         <h1>OVERVIEW</h1>
+
+        <section id="experience">
+        <div id="content_block">
         <h2>Experience</h2>
         <p>I am a Lead Interaction Designer, Service Architect and Digital Product Strategist.</p>
-        <p>My work includes a broad mix of web-based SAAS applications for Fortune 1000 companies and start-ups.</p>
+        <p>My work includes a broad mix of web-based SAAS applications for Fortune 1000 companies as well as concept-stage start-ups.</p>
         <p>I really enjoy working on software that requires the creation and adoption of accompanying business processes.</p>
         <p>My experience spans a particulary broad set of vertical concerns including Finance, Consumer Banking, Travel, Hospitality, Pharma, Beverage, Retail, Education and Government.</p>
         <p>Additionally, I have a unique perspective on the relationship between advertising agencies and media having worked as both a service provider and client of major digital agencies.</p>
-        <hr>
+        </div>
+        </section>
+
+        <section id="skills">
+        <div id="content_block">   
         <h2>Skills</h2>
         <p>User Experience Design / Information Architecture / Service Design / Wireframes / Sitemaps / Customer Journeys / Personas / Design Research / Product Strategy / Feature Roadmaps / Software Animations</p>
-        <hr>
+        </div>
+        </section>
+
+        <section id="education">
+        <div id="content_block">
         <h2>Education</h2>
         <p>I earned a B.A. in Economics from the University of Chicago. I am also an Eagle Scout with over 1000 nights in the wilderness.</p>
-        <hr>
+        </div>
+        </section>
+
+        <section id="project1">
+        <div id="content_block">
         <h1>PROJECT EXAMPLES</h1>
         <h2>Project Name</h2>
         <h3>Client Name</h3>
         <h4>Task, Task, Task</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna. Curabitur sem felis, fringilla id nunc non, commodo porttitor mauris. Aliquam egestas diam libero, in sodales elit dictum eu. Aenean neque arcu, suscipit lacinia eros vel, ullamcorper hendrerit eros. Mauris at nibh in nisl luctus ornare vel id diam. Quisque eget suscipit est. Cras viverra, felis nec egestas venenatis, nibh quam gravida augue, quis euismod mi augue quis dui.</p>
-        <hr>
+        </div>
+        </section>
+
+        <section id="project2">
+        <div id="content_block">
+        <h2>Project Name</h2>
+        <h3>Client Name</h3>
+        <h4>Task, Task, Task</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna. Curabitur sem felis, fringilla id nunc non, commodo porttitor mauris. Aliquam egestas diam libero, in sodales elit dictum eu. Aenean neque arcu, suscipit lacinia eros vel, ullamcorper hendrerit eros. Mauris at nibh in nisl luctus ornare vel id diam. Quisque eget suscipit est. Cras viverra, felis nec egestas venenatis, nibh quam gravida augue, quis euismod mi augue quis dui.</p>
+        </div>
+        </section>
+
+        <section id="project3">
+        <div id="content_block">
+        <h2>Project Name</h2>
+        <h3>Client Name</h3>
+        <h4>Task, Task, Task</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna. Curabitur sem felis, fringilla id nunc non, commodo porttitor mauris. Aliquam egestas diam libero, in sodales elit dictum eu. Aenean neque arcu, suscipit lacinia eros vel, ullamcorper hendrerit eros. Mauris at nibh in nisl luctus ornare vel id diam. Quisque eget suscipit est. Cras viverra, felis nec egestas venenatis, nibh quam gravida augue, quis euismod mi augue quis dui.</p>
+        </div>
+        </section>
+
     </div>
-    <div id="header_sm">
+<!--    <div id="header_sm">
         <h1>CLAYTON HARPER&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;USER EXPERIENCE & SERVICE ARCHITECTURE</h1>
-    </div>
+    </div> -->
 </div>
 </body>
