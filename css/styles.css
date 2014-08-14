@@ -174,7 +174,7 @@
 
     #content h3 {
         font-family: 'Dosis', sans-serif;
-        font-weight: 300;
+        font-weight: 200;
         font-size: 18px;
         padding: 0px 0px;
         margin-top: 0px;
@@ -212,12 +212,11 @@
         margin: 15px 0px;
     }
 
-.headroom {
-    transition: transform 200ms linear;
-}
-.headroom--pinned {
-    transform: translateY(0%);
-}
-.headroom--unpinned {
-    transform: translateY(-100%);
-}     
+    #image_row {
+        display: inline-flex;
+    }
+
+    #image_item {
+    padding-right: 10px;
+    padding-bottom: 10px;
+    }  
