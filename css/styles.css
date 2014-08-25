@@ -225,3 +225,13 @@
         padding-right: 10px;
         padding-bottom: 10px;
     }  
+
+    .image_row {
+        display: inline-flex;
+    }
+
+    .image_item {
+        width: 100px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }

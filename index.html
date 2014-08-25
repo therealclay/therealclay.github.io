@@ -4,12 +4,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500' rel='stylesheet' type='text/css'>
     <title>CLAYTON HARPER | HE MAKES SOFTWARE </title>
+
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/jquery-1.10.1.min.js"></script>
-    <script src="js/jquery.scrollto.js"></script>  
+    
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+    <script src="js/jquery.scrollto.js"></script>
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">   
+
+    <!-- Magnific Popup core JS file -->
+    <script src="magnific-popup/jquery.magnific-popup.js"></script>
     
     <script>
-    $(document).ready(function(){
+        /** Magnific Stuff Here
+        */
+        $(document).ready(function(){
+        
+        $('.image-link').magnificPopup({type:'image'});
+
+        $('.image_item').magnificPopup({ 
+          type: 'image'
+            // other options
+        });
 
         /** 
          * This part does the "fixed navigation after scroll" functionality
@@ -30,51 +48,14 @@
          * This part causes smooth scrolling using scrollto.js
          * We target all a tags inside the nav, and apply the scrollto.js to it.
          */
+        
         $("nav a").click(function(evn){
             evn.preventDefault();
             $('html,body').scrollTo(this.hash, this.hash);
         });
 
-        /**
-         * This part handles the highlighting functionality.
-         * We use the scroll functionality again, some array creation and 
-         * manipulation, class adding and class removing, and conditional testing
-         */
-        /** var aChildren = $("nav li").children(); // find the a children of the list items
-        var aArray = []; // create the empty aArray
-        for (var i=0; i < aChildren.length; i++) {    
-            var aChild = aChildren[i];
-            var ahref = $(aChild).attr('href');
-            aArray.push(ahref);
-        } // this for loop fills the aArray with attribute href values
-
-        $(window).scroll(function(){
-            var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
-            var windowHeight = $(window).height(); // get the height of the window
-            var docHeight = $(document).height();
-
-            for (var i=0; i < aArray.length; i++) {
-                var theID = aArray[i];
-                var divPos = $(theID).offset().top; // get the offset of the div from the top of page
-                var divHeight = $(theID).height(); // get the height of the div in question
-                if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-                    $("a[href='" + theID + "']").addClass("nav-active");
-                } else {
-                    $("a[href='" + theID + "']").removeClass("nav-active");
-                }
-            }
-
-            if(windowPos + windowHeight == docHeight) {
-                if (!$("nav li:last-child a").hasClass("nav-active")) {
-                    var navActiveCurrent = $(".nav-active").attr("href");
-                    $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
-                    $("nav li:last-child a").addClass("nav-active");
-                }
-            }
-        }); */
     });
     </script>
-
 </head>
 
 <body>
@@ -108,7 +89,6 @@
 
     <div id="content">
         <h1>OVERVIEW</h1>
-
         <section id="experience">
         <div id="content_block">
         <h3>Experience:</h3>
@@ -117,8 +97,7 @@
         <p>I've had the good fortune to work on a particulary broad set of vertical concerns including Finance, Consumer Banking, Travel, Hospitality, Pharma, Beverage, Retail, Education and Government. Having a view into so many industries has allowed me to see the commonalities of all sort of companies which is pretty valuable when trying to locate the essential aspect of a new project.</p>
         <p>I really enjoy designing software that has multiple user audiences with distinct needs. I know I'm in the right place if the project requires the creation and adoption of accompanying business processes.</p>
         <p>Additionally, I have a unique perspective on the relationship between advertising agencies and media having worked as both a service provider and client of major digital agencies on custom advertising products.</p>
-        <p>Increasingly, I enjoy working at a product-strategic level. The reasons for a particular service works for a user base.</p>
-        <p>The experience of working as a product manager in a scrum environmet lead me to increase my technical chops.</p>
+        <p>I think I'm happiest working at a product strategy level these days or at least like to be critically involved in defining the problem space for product requirements. I find I'm most interested in the reasons why particular service and set of features works for a given user base. As a result, I'm always thrilled when there's an opportunity to do proper end-user research for a software product's roadmap.</p>
         </div>
         </section>
 
@@ -142,22 +121,13 @@
         <div id="image_item"><img src="images/logo_jetblue_small.jpg" width="100px"></div>
         <h3>Passenger Reservation System</h3>
         <h4>Interaction Design, Wireframes, User Acceptance Testing</h4>
-        <div id="image_row">
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>     
+        <div class="image_row">
+        <a href="images/pop_1.jpg" class="image_item"><img src="images/pop_1.jpg" width="100" height="75"></a>
+        <a href="images/pop_2.jpg" class="image_item"><img src="images/pop_1.jpg" width="100" height="75"></a>
+        <a href="images/pop_3.jpg" class="image_item"><img src="images/pop_1.jpg" width="100" height="75"></a>
         </div>  
-        <h2>The Ask:</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla.</p>
-        <h2>Considerations:</h2>
-        <p>Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
-        <h2>What I really learned</h2>
-        <p>Curabitur sem felis, fringilla id nunc non, commodo porttitor mauris. Aliquam egestas diam libero, in sodales elit dictum eu. Aenean neque arcu, suscipit lacinia eros vel, ullamcorper hendrerit eros. Mauris at nibh in nisl luctus ornare vel id diam. Quisque eget suscipit est. Cras viverra, felis nec egestas venenatis, nibh quam gravida augue, quis euismod mi augue quis dui.</p>
+        <h2>Overview:</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
         </div>
         </section>
 
@@ -166,22 +136,13 @@
         <div id="image_item"><img src="images/logo_jetblue_small.jpg" width="100px"></div>
         <h3>Passenger Reservation System</h3>
         <h4>Interaction Design, Wireframes, User Acceptance Testing</h4>
-        <div id="image_row">
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>
-        <a href=""><div id="image_item"><img src="images/image_pholder.jpg"></div></a>     
+        <div class="image_row">
+        <a href="images/pop_1.jpg"><div class="image_item"><img src="images/pop_1.jpg" width="100" height="75"></div></a>
+        <a href="images/pop_2.jpg"><div class="image_item"><img src="images/pop_2.jpg" width="100" height="75"></div></a>
+        <a href="images/pop_3.jpg"><div class="image_item"><img src="images/pop_3.jpg" width="100" height="75"></div></a>
         </div>  
-        <h2>The Ask:</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla.</p>
-        <h2>Considerations:</h2>
-        <p>Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
-        <h2>What I really learned</h2>
-        <p>Curabitur sem felis, fringilla id nunc non, commodo porttitor mauris. Aliquam egestas diam libero, in sodales elit dictum eu. Aenean neque arcu, suscipit lacinia eros vel, ullamcorper hendrerit eros. Mauris at nibh in nisl luctus ornare vel id diam. Quisque eget suscipit est. Cras viverra, felis nec egestas venenatis, nibh quam gravida augue, quis euismod mi augue quis dui.</p>
+        <h2>Overview:</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
         </div>
         </section>
         <p>Thanks for looking!</p>
