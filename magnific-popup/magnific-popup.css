@@ -152,8 +152,10 @@ button::-moz-focus-inner {
   width: 100%; }
 
 .mfp-counter {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 200;
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 0;
   color: #cccccc;
   font-size: 12px;
@@ -283,10 +285,15 @@ img.mfp-img {
   cursor: auto; }
 
 .mfp-title {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
   text-align: left;
   line-height: 18px;
   color: #f3f3f3;
   word-wrap: break-word;
+  padding-top: 10px;
+  padding-bottom: 20px;
   padding-right: 36px; }
 
 .mfp-image-holder .mfp-content {
