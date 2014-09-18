@@ -19,7 +19,7 @@ $.scrollTo = $.fn.scrollTo = function(x, y, options){
             duration: 600,
             complete: $.noop,
             step: $.noop
-        }
+        }   
     }, options);
 
     return this.each(function(){
