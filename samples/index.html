@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500' rel='stylesheet' type='text/css'>
+    <title>CLAYTON HARPER | HE MAKES SOFTWARE </title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.scrollto.js"></script>
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">   
+    <!-- Magnific Popup core JS file -->
+    <script src="magnific-popup/jquery.magnific-popup.js"></script>
+    
+    <script>
+        /** Magnific Stuff Here
+        */
+        $(document).ready(function(){
+        $('.image_row').each(function() {  
+        $(this).magnificPopup({
+          delegate: 'a', // child items selector, by clicking on it popup will open
+          type: 'image',
+          gallery:{enabled:true,
+                    navigateByImgClick: true,
+                    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+
+                },
+          
+          // other options
+          mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+            zoom: {
+                enabled: true, // By default it's false, so don't forget to enable it
+                duration: 150, // duration of the effect, in milliseconds
+                easing: 'ease-in-out', // CSS transition easing function 
+                // The "opener" function should return the element from which popup will be zoomed in
+                // and to which popup will be scaled down
+                // By defailt it looks for an image tag:
+                opener: function(openerElement) {
+                // openerElement is the element on which popup was initialized, in this case its <a> tag
+                // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+                    }
+                }
+            });
+        });
+        /** 
+         * This part does the "fixed navigation after scroll" functionality
+         * We use the jQuery function scroll() to recalculate our variables as the 
+         * page is scrolled/
+         */
+        $(window).scroll(function () {
+          if ( $(this).scrollTop() > 210 && !$('#nav-anchor').hasClass('stick') ) {
+            $('nav').addClass('stick');
+           } else if ( $(this).scrollTop() <= 200 ) {
+            $('nav').removeClass('stick');
+          }
+        });
+
+        /**
+         * This part causes smooth scrolling using scrollto.js
+         * We target all a tags inside the nav, and apply the scrollto.js to it.
+         */
+        
+        $("nav a").click(function(evn){
+            evn.preventDefault();
+            $('html,body').scrollTo(this.hash, this.hash);
+        });
+
+    });
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <h1>CLAYTON HARPER&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;USER EXPERIENCE & SERVICE ARCHITECTURE&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;917 803 8661&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;CEHARPER (A) MAC.COM</h1>
+    </div>
+<div id="wrapper">
+    <div id="sidebar">
+    <div id="portrait">
+        <img src="images/clay.jpg" width="165">
+    </div>
+    <nav class>       
+        <div id="nav-anchor"></div>
+        <div id="sidebar_block"> 
+        <h1>OVERVIEW</h1>
+        <ul>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>          
+        </ul>
+        </div>
+        <div id="sidebar_block"> 
+        <h1>PROJECT EXAMPLES</h1>
+        <ul>
+            <li><a href="#project1">JetBlue</a></li>
+            <li><a href="#project2">Panasonic</a></li>
+            <li><a href="#project3">Lumos</a></li>
+            <li><a href="#project4">GE</a></li>
+            <li><a href="#project5">Decibel85</a></li>
+            <li><a href="#project6">Smirnoff</a></li>
+            <li><a href="#project7">TabbedOut</a></li>
+        </ul>
+        </div>
+    </nav>
+    </div>
+
+    <div id="content">
+        <h1>OVERVIEW</h1>
+        <section>
+        <div id="content_block">
+        <span id="experience"> &nbsp; </span>
+        <h3>Experience:</h3>
+        <p>I am a Lead Interaction Designer, Service Architect and Digital Product Strategist.</p>
+        <p>My work includes a broad mix of web-based SAAS and mobile applications for Fortune 1000 companies as well as concept-stage start-ups.</p>
+        <p>I've had the good fortune to work on a particulary broad set of vertical concerns including Finance, Consumer Banking, Travel, Hospitality, Pharma, Beverage, Retail, Education and Government. Having a view into so many industries has allowed me to see the commonalities of all sort of companies which is pretty valuable when trying to locate the essential aspect of a new project.</p>
+        <p>I really enjoy designing software that has multiple user audiences with distinct needs. I know I'm in the right place if the project requires the creation and adoption of accompanying business processes.</p>
+        <p>Additionally, I have a unique perspective on the relationship between advertising agencies and media having worked as both a service provider and client of major digital agencies on custom advertising products.</p>
+        <p>I think I'm happiest working at a product strategy level these days or at least like to be critically involved in defining the problem space for product requirements. I find I'm most interested in the reasons why particular service and set of features works for a given user base. As a result, I'm always thrilled when there's an opportunity to do proper end-user research for a software product's roadmap.</p>
+        </div>
+        </section>
+
+        <section>
+        <div id="content_block">
+        <span id="skills"> &nbsp; </span> 
+        <h3>Skills:</h3>
+        <p>User Experience Design / Information Architecture / Service Design / Wireframes / Sitemaps / Customer Journeys / Personas / Eco-Systems / Design Research / Product Strategy / Feature Roadmaps / Software Animations</p>
+        </div>
+        </section>
+
+        <section>
+        <div id="content_block">
+        <span id="education"> &nbsp; </span>
+        <h3>Education:</h3>
+        <p>I earned a B.A. in Economics from the University of Chicago. I am also an Eagle Scout with over 1000 nights in the wilderness.</p>
+        </div>
+        </section>
+        <h1>PROJECT EXAMPLES</h1>
+        <section>
+        <span id="project1"> &nbsp; </span>
+        <div id="content_block">
+        <div id="image_item"><img src="images/logo_jetblue_small.jpg" width="100px"></div>
+        <h3>Passenger Reservation System</h3>
+        <h4>Interaction Design, Wireframes, User Acceptance Testing</h4>
+        
+        <div class="image_row">
+        <a href="images/pop_1.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_1.jpg" width="100" height="75"></a>
+        <a href="images/pop_2.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_2.jpg" width="100" height="75"></a>
+        <a href="images/pop_3.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_3.jpg" width="100" height="75"></a>
+        </div>
+
+        <h2>Overview:</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
+        </div>
+        </section>
+
+        <section>
+        <span id="project2"> &nbsp; </span>
+        <div id="content_block">
+            <div id="image_item"><img src="images/logo_panasonic_small.jpg" width="175px"></div>
+        <h3>Telehealth System</h3>
+        <h4>Product Strategy, Functional Analysis, Interaction Design</h4>
+        <div class="image_row">
+        <a href="images/pop_4.jpg" class="image_item" title="This is a photo caption or description of the stuff in the image. I'll write a description of the contents here to let the viewer know what they are looking at."><img src="images/pop_4.jpg" width="100" height="75"></a>
+        <a href="images/pop_5.jpg" class="image_item"><img src="images/pop_5.jpg" width="100" height="75"></a>
+        <a href="images/pop_6.jpg" class="image_item"><img src="images/pop_6.jpg" width="100" height="75"></a>
+        <a href="images/pop_7.jpg" class="image_item"><img src="images/pop_7.jpg" width="100" height="75"></a>
+        </div>  
+        <h2>Overview:</h2>
+        <p>For this homecare nursing application, I had a hybrid role where I contributed product architecture and functional analysis tasks to a telehealth system and served as a final set of eyes for the interaction and visual designers. This project was interesting to me because there were in effect two very distinct user roles with totally different product experiences. On the one hand, we interviewed homecare nurses about their reporting needs, daily taskflow and device usage patterns. On the other hand, the patients had a vastly different user experience where an Android TV and tablet presented them with health questions and recorded biometric information from bluetooth devices like a blood pressure cuff and weight scale. I'm most proud of coming up with some very flexible methods that allowed for custom risk weighting to be normalized and plugged into the visualizations for each client nursing organization.</p>
+        </div>
+        </section>
+
+        <section>
+        <span id="project3"> &nbsp; </span>
+        <div id="content_block">
+        <div id="image_item"><img src="images/logo_jetblue_small.jpg" width="100px"></div>
+        <h3>Passenger Reservation System</h3>
+        <h4>Interaction Design, Wireframes, User Acceptance Testing</h4>
+        
+        <div class="image_row">
+        <a href="images/pop_1.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_1.jpg" width="100" height="75"></a>
+        <a href="images/pop_2.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_2.jpg" width="100" height="75"></a>
+        <a href="images/pop_3.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_3.jpg" width="100" height="75"></a>
+        </div>
+
+        <h2>Overview:</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
+        </div>
+        </section>
+
+        <section>
+        <span id="project4"> &nbsp; </span>
+        <div id="content_block">
+        <div id="image_item"><img src="images/logo_jetblue_small.jpg" width="100px"></div>
+        <h3>Passenger Reservation System</h3>
+        <h4>Interaction Design, Wireframes, User Acceptance Testing</h4>
+        
+        <div class="image_row">
+        <a href="images/pop_1.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_1.jpg" width="100" height="75"></a>
+        <a href="images/pop_2.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_2.jpg" width="100" height="75"></a>
+        <a href="images/pop_3.jpg" class="image_item" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh."><img src="images/pop_3.jpg" width="100" height="75"></a>
+        </div>
+
+        <h2>Overview:</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis magna vitae magna bibendum bibendum. Suspendisse malesuada enim luctus, adipiscing enim et, ultrices nibh. Donec eu mauris nulla. Suspendisse pellentesque urna magna, vel dictum nunc dictum bibendum. Fusce porta libero vel erat ornare, condimentum pellentesque lorem mollis. Vestibulum vitae sapien id ante venenatis eleifend. Aenean posuere lectus in tortor accumsan, vel dapibus lectus facilisis. Aliquam ac odio sem. Curabitur a purus pulvinar, ultricies mi in, dignissim urna.</p>
+        </div>
+        </section>
+
+        <p>Thanks for looking!</p>
+    </div>
+<!--    <div id="header_sm">
+        <h1>CLAYTON HARPER&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;USER EXPERIENCE & SERVICE ARCHITECTURE</h1>
+    </div> -->
+</div>
+</body>
